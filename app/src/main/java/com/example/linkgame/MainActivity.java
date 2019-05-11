@@ -22,9 +22,14 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private AdView mAdView;
     private int countTurn; // 0 = red, 1 - yellow
+    private boolean gameEnd = false ; //判斷一局遊戲結束沒
     private ArrayList<Integer> alreadySelectedList = new ArrayList<>();
     private ArrayList<Integer> redSelectedList = new ArrayList<>();
     private ArrayList<Integer> yellowSelectedList = new ArrayList<>();
+    private int redWinTurn = 0;
+    private int yellowWinTurn = 0;
+    private int drawTurn = 0;
+
 
     public void setDisplayWord(String string ){
 
@@ -32,7 +37,12 @@ public class MainActivity extends AppCompatActivity {
         textView.setText(string);
     }
 
-
+    public void reSetCountPoint(View view){
+        this.redWinTurn = 0;
+        this.yellowWinTurn = 0;
+        this.drawTurn = 0;
+        countWinTurn(false,false,false);
+    }
 
 public void restartGame(View view){
 
@@ -40,6 +50,7 @@ public void restartGame(View view){
     alreadySelectedList.clear();
     redSelectedList.clear();
     yellowSelectedList.clear();
+    gameEnd = false;
 
     GridLayout gridLayout = findViewById(R.id.gridLayout);
 
@@ -54,9 +65,33 @@ public void restartGame(View view){
     Button newGameButton = findViewById(R.id.NewGameButton);
     newGameButton.setVisibility(View.INVISIBLE);
     //Toast.makeText(this,"Start a New Game", Toast.LENGTH_SHORT).show();
-    setDisplayWord("New Game Start!");
+    //setDisplayWord("New Game Start!");
+    setDisplayWord("新遊戲開始!");
 }
 
+
+    public void countWinTurn( boolean redWin, boolean yellowWin ,boolean draw ){
+        if (redWin){
+            this.redWinTurn += 1;
+        }
+
+        if (yellowWin){
+            this.yellowWinTurn += 1;
+        }
+
+        if (draw){
+            this.drawTurn += 1;
+        }
+
+
+
+
+        TextView textView = findViewById(R.id.displayPoint);
+
+        textView.setText("成績 : "+"   紅: " + redWinTurn + "   黃 : " + yellowWinTurn +  "   平手 : " + drawTurn);
+
+
+    }
 
     public boolean alreadySelect(int index){
 
@@ -64,8 +99,8 @@ public void restartGame(View view){
 
             if(index == alreadySelectedList.get(i).intValue()) {
                 System.out.println("Has the same value");
-                Toast.makeText(this,"Can Not Select This One!", Toast.LENGTH_SHORT).show();
-
+               // Toast.makeText(this,"Can Not Select This One!", Toast.LENGTH_SHORT).show();
+                 Toast.makeText(this,"已經被選過了", Toast.LENGTH_SHORT).show();
                 return true;
             }
         }
@@ -77,21 +112,29 @@ public void restartGame(View view){
     public boolean isWin(List<Integer> playerList){
 
         if (playerList.contains(Integer.valueOf(0)) &&  playerList.contains(Integer.valueOf(1)) && playerList.contains(Integer.valueOf(2))) {
+            gameEnd = true;
             return true;
         }
         else  if (playerList.contains(Integer.valueOf(3)) &&  playerList.contains(Integer.valueOf(4)) && playerList.contains(Integer.valueOf(5))) {
+            gameEnd = true;
             return true;
         }else  if (playerList.contains(Integer.valueOf(6)) &&  playerList.contains(Integer.valueOf(7)) && playerList.contains(Integer.valueOf(8))) {
+            gameEnd = true;
             return true;
         }else  if (playerList.contains(Integer.valueOf(0)) &&  playerList.contains(Integer.valueOf(4)) && playerList.contains(Integer.valueOf(8))) {
+            gameEnd = true;
             return true;
         }else  if (playerList.contains(Integer.valueOf(2)) &&  playerList.contains(Integer.valueOf(4)) && playerList.contains(Integer.valueOf(6))) {
+            gameEnd = true;
             return true;
         }else  if (playerList.contains(Integer.valueOf(0)) &&  playerList.contains(Integer.valueOf(3)) && playerList.contains(Integer.valueOf(6))) {
+            gameEnd = true;
             return true;
         }else  if (playerList.contains(Integer.valueOf(1)) &&  playerList.contains(Integer.valueOf(4)) && playerList.contains(Integer.valueOf(7))) {
+            gameEnd = true;
             return true;
         }else  if (playerList.contains(Integer.valueOf(2)) &&  playerList.contains(Integer.valueOf(5)) && playerList.contains(Integer.valueOf(8))) {
+            gameEnd = true;
             return true;
         }
 
@@ -106,37 +149,50 @@ public void restartGame(View view){
         int index = Integer.parseInt(imageView.getTag().toString());
         Log.i("ImagineView","Hit "+index);
 
+        if (gameEnd == false){
 
-        if (!alreadySelect(index)) {// check already click or not
-            imageView.setTranslationX(-2000);
-            alreadySelectedList.add(Integer.valueOf(index));
 
-            if (countTurn == 0) { // red select
-                imageView.setImageResource(R.drawable.red);
-                imageView.animate().translationXBy(2000).setDuration(300);
-                redSelectedList.add(Integer.valueOf(index));
-                if(isWin(redSelectedList)){
-                   newGameButton.setVisibility(View.VISIBLE);
-                    //Toast.makeText(this,"Winner is Red" , Toast.LENGTH_SHORT).show();
-                    setDisplayWord("Winner is Red");
+            if (!alreadySelect(index)) {// check already click or not
+                imageView.setTranslationX(-2000);
+                alreadySelectedList.add(Integer.valueOf(index));
+
+                if (countTurn == 0) { // red select
+                    imageView.setImageResource(R.drawable.red);
+                    imageView.animate().translationXBy(2000).setDuration(300);
+                    redSelectedList.add(Integer.valueOf(index));
+                    if(isWin(redSelectedList)){
+                        newGameButton.setVisibility(View.VISIBLE);
+                        //Toast.makeText(this,"Winner is Red" , Toast.LENGTH_SHORT).show();
+                        //setDisplayWord("Winner is Red");
+                        setDisplayWord("紅色贏了!");
+                        countWinTurn(true,false,false);
+
+                    }
+                    countTurn = 1;
+                } else {
+                    imageView.setImageResource(R.drawable.yellow);  // yellow select
+                    imageView.animate().translationXBy(2000).setDuration(300);
+                    yellowSelectedList.add(Integer.valueOf(index));
+                    if(isWin(yellowSelectedList)){
+                        newGameButton.setVisibility(View.VISIBLE);
+                        //Toast.makeText(this,"Winner is Yellow" , Toast.LENGTH_SHORT).show();
+                        //setDisplayWord("Winner is Yellow");
+                        setDisplayWord("黃色贏了!");
+                        countWinTurn(false,true,false);
+
+                    }
+                    countTurn = 0;
                 }
-                countTurn = 1;
-            } else {
-                imageView.setImageResource(R.drawable.yellow);  // yellow select
-                imageView.animate().translationXBy(2000).setDuration(300);
-                yellowSelectedList.add(Integer.valueOf(index));
-                if(isWin(yellowSelectedList)){
-                    newGameButton.setVisibility(View.VISIBLE);
-                    //Toast.makeText(this,"Winner is Yellow" , Toast.LENGTH_SHORT).show();
-                    setDisplayWord("Winner is Yellow");
-                }
-                countTurn = 0;
             }
-        }
 
-        if (alreadySelectedList.size() == 9 && !isWin(yellowSelectedList) && !isWin(redSelectedList)){
-            setDisplayWord("End in a draw!");
-            newGameButton.setVisibility(View.VISIBLE);
+            if (alreadySelectedList.size() == 9 && !isWin(yellowSelectedList) && !isWin(redSelectedList)){
+                //setDisplayWord("End in a draw!");
+                setDisplayWord("平手!");
+                newGameButton.setVisibility(View.VISIBLE);
+                countWinTurn(false,false,true);
+
+            }
+
         }
 
     }
@@ -154,5 +210,7 @@ public void restartGame(View view){
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+        countWinTurn(false,false,false);
+
     }
 }

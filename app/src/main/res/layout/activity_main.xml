@@ -11,15 +11,13 @@
         android:layout_width="360dp"
         android:layout_height="360dp"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="267dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="104dp"
         android:background="@drawable/board"
         app:columnCount="3"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NewGameButton"
         app:rowCount="3">
 
         <ImageView
@@ -132,35 +130,42 @@
         android:id="@+id/NewGameButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="162dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="162dp"
-        android:layout_marginBottom="8dp"
         android:onClick="restartGame"
-        android:text="New Game"
+        android:text="新遊戲"
         android:visibility="invisible"
-        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.857"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/textDisplay" />
+
+    <Button
+        android:id="@+id/reCountButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:onClick="reSetCountPoint"
+        android:text="重新計分"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
 
     <TextView
         android:id="@+id/textDisplay"
-        android:layout_width="262dp"
-        android:layout_height="123dp"
-        android:layout_marginStart="95dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="95dp"
-        android:layout_marginBottom="8dp"
-        android:text="Welcome! \nGame Start!"
+        android:layout_width="222dp"
+        android:layout_height="93dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="100dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="歡迎 \n遊戲開始!"
         android:textAlignment="center"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/NewGameButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -173,10 +178,23 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="45dp"
         android:layout_marginEnd="46dp"
-        android:layout_marginBottom="1dp"
+        android:visibility="invisible"
         ads:adSize="BANNER"
         ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
         ads:layout_constraintBottom_toBottomOf="parent"
         ads:layout_constraintEnd_toEndOf="parent"
         ads:layout_constraintStart_toStartOf="parent"></com.google.android.gms.ads.AdView>
+
+    <TextView
+        android:id="@+id/displayPoint"
+        android:layout_width="244dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
+
 </android.support.constraint.ConstraintLayout>
