@@ -1,5 +1,7 @@
 package com.example.linkgame;
 
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,6 +9,7 @@ import android.view.View;
 import android.support.v7.widget.GridLayout;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
     private int redWinTurn = 0;
     private int yellowWinTurn = 0;
     private int drawTurn = 0;
-
+    MediaPlayer mediaPlayer;
+    private int backGroundMusic = 0 ;
 
     public void setDisplayWord(String string ){
 
@@ -113,34 +117,41 @@ public void restartGame(View view){
 
         if (playerList.contains(Integer.valueOf(0)) &&  playerList.contains(Integer.valueOf(1)) && playerList.contains(Integer.valueOf(2))) {
             gameEnd = true;
-            return true;
         }
         else  if (playerList.contains(Integer.valueOf(3)) &&  playerList.contains(Integer.valueOf(4)) && playerList.contains(Integer.valueOf(5))) {
             gameEnd = true;
-            return true;
         }else  if (playerList.contains(Integer.valueOf(6)) &&  playerList.contains(Integer.valueOf(7)) && playerList.contains(Integer.valueOf(8))) {
             gameEnd = true;
-            return true;
         }else  if (playerList.contains(Integer.valueOf(0)) &&  playerList.contains(Integer.valueOf(4)) && playerList.contains(Integer.valueOf(8))) {
             gameEnd = true;
-            return true;
         }else  if (playerList.contains(Integer.valueOf(2)) &&  playerList.contains(Integer.valueOf(4)) && playerList.contains(Integer.valueOf(6))) {
             gameEnd = true;
-            return true;
         }else  if (playerList.contains(Integer.valueOf(0)) &&  playerList.contains(Integer.valueOf(3)) && playerList.contains(Integer.valueOf(6))) {
             gameEnd = true;
-            return true;
         }else  if (playerList.contains(Integer.valueOf(1)) &&  playerList.contains(Integer.valueOf(4)) && playerList.contains(Integer.valueOf(7))) {
             gameEnd = true;
-            return true;
         }else  if (playerList.contains(Integer.valueOf(2)) &&  playerList.contains(Integer.valueOf(5)) && playerList.contains(Integer.valueOf(8))) {
             gameEnd = true;
-            return true;
         }
 
+        if(gameEnd == true){
+            MediaPlayer winSound = MediaPlayer.create(this, R.raw.penclick);
+            winSound.start();
+            return true;
+        }
         return false;
     }
 
+    public void backGroundMusic(View view){
+
+        if (backGroundMusic == 0){
+            mediaPlayer.pause();
+            backGroundMusic = 1;
+        }else{
+            mediaPlayer.start();
+            backGroundMusic = 0;
+        }
+    }
 
     public void dropImagine(View view){
 
@@ -157,6 +168,7 @@ public void restartGame(View view){
                 alreadySelectedList.add(Integer.valueOf(index));
 
                 if (countTurn == 0) { // red select
+                    clickSound();
                     imageView.setImageResource(R.drawable.red);
                     imageView.animate().translationXBy(2000).setDuration(300);
                     redSelectedList.add(Integer.valueOf(index));
@@ -170,6 +182,7 @@ public void restartGame(View view){
                     }
                     countTurn = 1;
                 } else {
+                   clickSound();
                     imageView.setImageResource(R.drawable.yellow);  // yellow select
                     imageView.animate().translationXBy(2000).setDuration(300);
                     yellowSelectedList.add(Integer.valueOf(index));
@@ -198,7 +211,12 @@ public void restartGame(View view){
     }
 
 
+    public void clickSound(){
+        MediaPlayer button = MediaPlayer.create(this, R.raw.click);
+        button.start();
 
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -211,6 +229,39 @@ public void restartGame(View view){
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
         countWinTurn(false,false,false);
+        //play the music
+        mediaPlayer = MediaPlayer.create(this, R.raw.splashing);
+        mediaPlayer.start();
+        mediaPlayer.setLooping(true);
 
+        //SeekBar
+       final AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE); // create the AudioManager
+
+        int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+        int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+
+        SeekBar seekBar = findViewById(R.id.seekBar);
+        seekBar.setMax(maxVolume); //設定最大上限
+        seekBar.setProgress(currentVolume); // 設定起始數值
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() { // create the seekbar
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, progress , 0); // progress == 目前bar的位置
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        } //seekBar End
+
+
+        );
     }
 }
