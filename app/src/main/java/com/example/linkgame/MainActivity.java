@@ -99,7 +99,7 @@ public void restartGame(View view){
 
         TextView textView = findViewById(R.id.displayPoint);
 
-        textView.setText("成績 : "+"   紅: " + redWinTurn + "   黃 : " + yellowWinTurn +  "   平手 : " + drawTurn);
+        textView.setText("成績 : "+"  紅: " + redWinTurn + "  黃 : " + yellowWinTurn +  "  平手 : " + drawTurn);
 
 
     }
@@ -210,6 +210,7 @@ public void restartGame(View view){
                 setDisplayWord("平手!");
                 newGameButton.setVisibility(View.VISIBLE);
                 countWinTurn(false,false,true);
+                this.gameEnd = true;
 
             }
 
@@ -230,7 +231,7 @@ public void restartGame(View view){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        MobileAds.initialize(this, "ca-app-pub-6224254485550727/1185361763");
+        MobileAds.initialize(this, "ca-app-pub-6224254485550727~8514446625");
 
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
