@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <android.support.v7.widget.GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="360dp"
+        android:layout_height="360dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="267dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="104dp"
+        android:background="@drawable/board"
+        app:columnCount="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rowCount="3">
+
+        <ImageView
+            android:id="@+id/imageView0"
+            android:layout_width="107dp"
+            android:layout_height="108dp"
+            android:layout_margin="4dp"
+            android:layout_marginLeft="8dp"
+            android:onClick="dropImagine"
+            android:tag="0"
+            app:layout_column="0"
+            app:layout_row="0" />
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="107dp"
+            android:layout_height="108dp"
+            android:layout_margin="4dp"
+            android:layout_marginLeft="6dp"
+            android:onClick="dropImagine"
+            android:tag="1"
+            app:layout_column="1"
+            app:layout_row="0" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="107dp"
+            android:layout_height="108dp"
+            android:layout_margin="4dp"
+            android:layout_marginLeft="4dp"
+            android:onClick="dropImagine"
+            android:tag="2"
+            app:layout_column="2"
+            app:layout_row="0" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="107dp"
+            android:layout_height="108dp"
+            android:layout_margin="8dp"
+            android:layout_marginTop="10dp"
+            android:onClick="dropImagine"
+            android:tag="3"
+            app:layout_column="0"
+            app:layout_row="1" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="107dp"
+            android:layout_height="108dp"
+            android:layout_margin="8dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="10dp"
+            android:onClick="dropImagine"
+            android:tag="4"
+            app:layout_column="1"
+            app:layout_row="1" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="107dp"
+            android:layout_height="108dp"
+            android:layout_margin="8dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="10dp"
+            android:onClick="dropImagine"
+            android:tag="5"
+            app:layout_column="2"
+            app:layout_row="1" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="107dp"
+            android:layout_height="108dp"
+            android:layout_margin="8dp"
+            android:layout_marginTop="8dp"
+            android:onClick="dropImagine"
+            android:tag="6"
+            app:layout_column="0"
+            app:layout_row="2" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="107dp"
+            android:layout_height="108dp"
+            android:layout_margin="8dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="8dp"
+            android:onClick="dropImagine"
+            android:tag="7"
+            app:layout_column="1"
+            app:layout_row="2" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="107dp"
+            android:layout_height="108dp"
+            android:layout_margin="8dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="8dp"
+            android:onClick="dropImagine"
+            android:tag="8"
+            app:layout_column="2"
+            app:layout_row="2" />
+
+
+    </android.support.v7.widget.GridLayout>
+
+    <Button
+        android:id="@+id/NewGameButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="162dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="restartGame"
+        android:text="New Game"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.857"
+        />
+
+    <TextView
+        android:id="@+id/textDisplay"
+        android:layout_width="221dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="95dp"
+        android:layout_marginBottom="8dp"
+        android:text="Welcome! \nGame Start!"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/NewGameButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>
