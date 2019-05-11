@@ -1,5 +1,6 @@
 package com.example.linkgame;
 
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
@@ -34,6 +35,12 @@ public class MainActivity extends AppCompatActivity {
     private int drawTurn = 0;
     MediaPlayer mediaPlayer;
     private int backGroundMusic = 0 ;
+
+    public void goSetting(View view){
+
+        Intent intent = new Intent(getApplicationContext(),Setting.class);
+        startActivity(intent);
+    }
 
     public void setDisplayWord(String string ){
 
@@ -233,35 +240,5 @@ public void restartGame(View view){
         mediaPlayer = MediaPlayer.create(this, R.raw.splashing);
         mediaPlayer.start();
         mediaPlayer.setLooping(true);
-
-        //SeekBar
-       final AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE); // create the AudioManager
-
-        int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-        int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
-
-        SeekBar seekBar = findViewById(R.id.seekBar);
-        seekBar.setMax(maxVolume); //設定最大上限
-        seekBar.setProgress(currentVolume); // 設定起始數值
-
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() { // create the seekbar
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, progress , 0); // progress == 目前bar的位置
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        } //seekBar End
-
-
-        );
     }
 }
