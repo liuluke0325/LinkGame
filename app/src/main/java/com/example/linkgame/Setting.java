@@ -1,11 +1,13 @@
 package com.example.linkgame;
 
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 
 public class Setting extends AppCompatActivity {
@@ -14,6 +16,25 @@ public class Setting extends AppCompatActivity {
 public void goBack(View view){
     finish();
 }
+
+
+public void emailToMe(View view){
+    Intent i = new Intent(Intent.ACTION_SEND);
+    i.setType("message/rfc822");
+    i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"liuluke0325@gmail.com"});
+    i.putExtra(Intent.EXTRA_SUBJECT, "Tic Tac Toe 問題與建議");
+    //i.putExtra(Intent.EXTRA_TEXT   , "Send to Developer");
+    try {
+        startActivity(Intent.createChooser(i, "Send mail..."));
+    } catch (android.content.ActivityNotFoundException ex) {
+        Toast.makeText(this, "找不到email應用程式.", Toast.LENGTH_SHORT).show();
+    }
+
+}
+
+
+
+
 
 
     @Override

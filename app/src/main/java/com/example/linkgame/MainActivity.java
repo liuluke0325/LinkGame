@@ -230,12 +230,12 @@ public void restartGame(View view){
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        ///google ad
         MobileAds.initialize(this, "ca-app-pub-6224254485550727~8514446625");
-
         mAdView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+        // google end
         countWinTurn(false,false,false);
         //play the music
         mediaPlayer = MediaPlayer.create(this, R.raw.splashing);
