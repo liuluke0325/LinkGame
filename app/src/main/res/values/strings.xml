@@ -3,4 +3,8 @@
     <string name="newGame">新遊戲</string>
     <string name="reCount">重新計分</string>
     <string name="welcomeMessage">歡迎  點擊九宮格開始</string>
+
+    <string name="title_activity_grid_layout_practice">GridLayoutPractice</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

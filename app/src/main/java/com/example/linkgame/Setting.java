@@ -2,7 +2,6 @@ package com.example.linkgame;
 
 import android.content.Intent;
 import android.media.AudioManager;
-import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +16,11 @@ public void goBack(View view){
     finish();
 }
 
+public void goToPractice(View iew){
+
+    Intent intent = new Intent(getApplicationContext(), GridLayoutPractice.class);
+    startActivity(intent);
+}
 
 public void emailToMe(View view){
     Intent i = new Intent(Intent.ACTION_SEND);

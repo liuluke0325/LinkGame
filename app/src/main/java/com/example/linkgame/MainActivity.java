@@ -1,8 +1,13 @@
 package com.example.linkgame;
 
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.os.IBinder;
+import android.os.PowerManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,11 +38,15 @@ public class MainActivity extends AppCompatActivity {
     private int redWinTurn = 0;
     private int yellowWinTurn = 0;
     private int drawTurn = 0;
-    MediaPlayer mediaPlayer;
+    private MediaPlayer mediaPlayer;
     private int backGroundMusic = 0 ;
 
-    public void goSetting(View view){
 
+    public MediaPlayer getMediaPlayer(){
+        return mediaPlayer;
+    }
+
+    public void goSetting(View view){
         Intent intent = new Intent(getApplicationContext(),Setting.class);
         startActivity(intent);
     }
@@ -149,16 +158,16 @@ public void restartGame(View view){
         return false;
     }
 
-    public void backGroundMusic(View view){
-
-        if (backGroundMusic == 0){
-            mediaPlayer.pause();
-            backGroundMusic = 1;
-        }else{
-            mediaPlayer.start();
-            backGroundMusic = 0;
-        }
-    }
+//    public void backGroundMusic(View view){
+//
+//        if (backGroundMusic == 0){
+//            mediaPlayer.pause();
+//            backGroundMusic = 1;
+//        }else{
+//            mediaPlayer.start();
+//            backGroundMusic = 0;
+//        }
+//    }
 
     public void dropImagine(View view){
 
@@ -206,7 +215,7 @@ public void restartGame(View view){
             }
 
             if (alreadySelectedList.size() == 9 && !isWin(yellowSelectedList) && !isWin(redSelectedList)){
-                //setDisplayWord("End in a draw!");
+                setDisplayWord("End in a draw!");
                 setDisplayWord("平手!");
                 newGameButton.setVisibility(View.VISIBLE);
                 countWinTurn(false,false,true);
@@ -226,6 +235,25 @@ public void restartGame(View view){
 
     }
 
+
+
+
+
+
+
+
+
+  //End of music Service
+
+
+
+
+
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -237,9 +265,14 @@ public void restartGame(View view){
         mAdView.loadAd(adRequest);
         // google end
         countWinTurn(false,false,false);
+
+
         //play the music
         mediaPlayer = MediaPlayer.create(this, R.raw.splashing);
-        mediaPlayer.start();
-        mediaPlayer.setLooping(true);
+        //mediaPlayer.start();
+        //mediaPlayer.setLooping(true);
+
+
+
     }
 }
