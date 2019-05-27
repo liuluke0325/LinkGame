@@ -51,6 +51,7 @@ public class GridLayoutPractice extends AppCompatActivity {
         setContentView(R.layout.activity_grid_layout_practice);
         mediaPlayer = new MediaPlayer();
         mediaPlayer.pause();
+        mediaPlayer.stop();
 
 
         ListView listView = findViewById(R.id.listView);

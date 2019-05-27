@@ -15,7 +15,12 @@
 
 
 
-
+        <activity
+            android:name=".FullPractice"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_grid_layout_practice"
+            android:theme="@style/FullscreenTheme" />
+        <activity android:name=".Setting" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"

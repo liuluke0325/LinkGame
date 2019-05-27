@@ -26,7 +26,7 @@
             android:onClick="pressButton"
 
             android:tag="howitbegan"
-            android:text="How it began"
+            android:text="@string/button1"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />
@@ -35,7 +35,7 @@
             android:id="@+id/button2"
             android:onClick="pressButton"
             android:tag="splashing"
-            android:text="splashing"
+            android:text="@string/button2"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />
@@ -44,7 +44,7 @@
             android:id="@+id/button3"
             android:onClick="pressButton"
             android:tag="click"
-            android:text="click"
+            android:text="@string/button3"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />
@@ -53,7 +53,7 @@
             android:id="@+id/button4"
             android:onClick="pressButton"
             android:tag="penclick"
-            android:text="penclick"
+            android:text="@string/button4"
             app:layout_columnWeight="1"
             app:layout_gravity="fill"
             app:layout_rowWeight="1" />
@@ -62,7 +62,7 @@
             android:id="@+id/button6"
             android:onClick="pressButton"
             android:tag="Stop"
-            android:text="Stop"
+            android:text="@string/button5"
             app:layout_columnSpan="2"
 
             app:layout_gravity="fill" />
@@ -74,7 +74,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="音樂選單測試"
+        android:text="@string/titleInTest"
         android:textAlignment="center"
         android:textSize="18sp"
         app:layout_constraintTop_toTopOf="parent"

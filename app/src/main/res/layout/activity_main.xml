@@ -11,7 +11,7 @@
         android:layout_width="360dp"
         android:layout_height="360dp"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/board"
         app:columnCount="3"
@@ -131,7 +131,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="162dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="162dp"
         android:onClick="restartGame"
         android:text="@string/newGame"
@@ -155,14 +155,14 @@
 
     <TextView
         android:id="@+id/textDisplay"
-        android:layout_width="283dp"
-        android:layout_height="87dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="100dp"
-        android:gravity="center_horizontal|center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
         android:text="@string/welcomeMessage"
         android:textAlignment="center"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -184,7 +184,7 @@
     <TextView
         android:id="@+id/displayPoint"
         android:layout_width="244dp"
-        android:layout_height="43dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
 
@@ -198,13 +198,14 @@
         android:id="@+id/imageButton"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:background="#00FFFFFF"
         android:onClick="goSetting"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/setting" />
+        app:layout_constraintTop_toBottomOf="@+id/textDisplay"
+        app:srcCompat="@drawable/setting"
+        android:contentDescription="TODO" />
 
 </android.support.constraint.ConstraintLayout>

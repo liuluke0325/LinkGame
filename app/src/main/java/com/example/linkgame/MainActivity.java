@@ -86,7 +86,7 @@ public void restartGame(View view){
     newGameButton.setVisibility(View.INVISIBLE);
     //Toast.makeText(this,"Start a New Game", Toast.LENGTH_SHORT).show();
     //setDisplayWord("New Game Start!");
-    setDisplayWord("新遊戲開始!");
+    setDisplayWord("New Game Start!");
 }
 
 
@@ -108,7 +108,7 @@ public void restartGame(View view){
 
         TextView textView = findViewById(R.id.displayPoint);
 
-        textView.setText("成績 : "+"  紅: " + redWinTurn + "  黃 : " + yellowWinTurn +  "  平手 : " + drawTurn);
+        textView.setText("Score : "+"  Red: " + redWinTurn + "  Yellow : " + yellowWinTurn +  "  Draw : " + drawTurn);
 
 
     }
@@ -120,7 +120,7 @@ public void restartGame(View view){
             if(index == alreadySelectedList.get(i).intValue()) {
                 System.out.println("Has the same value");
                // Toast.makeText(this,"Can Not Select This One!", Toast.LENGTH_SHORT).show();
-                 Toast.makeText(this,"已經被選過了", Toast.LENGTH_SHORT).show();
+                 Toast.makeText(this,"You Can Not Pick This One", Toast.LENGTH_SHORT).show();
                 return true;
             }
         }
@@ -192,7 +192,7 @@ public void restartGame(View view){
                         newGameButton.setVisibility(View.VISIBLE);
                         //Toast.makeText(this,"Winner is Red" , Toast.LENGTH_SHORT).show();
                         //setDisplayWord("Winner is Red");
-                        setDisplayWord("紅色贏了!");
+                        setDisplayWord("Red Win!");
                         countWinTurn(true,false,false);
 
                     }
@@ -206,7 +206,7 @@ public void restartGame(View view){
                         newGameButton.setVisibility(View.VISIBLE);
                         //Toast.makeText(this,"Winner is Yellow" , Toast.LENGTH_SHORT).show();
                         //setDisplayWord("Winner is Yellow");
-                        setDisplayWord("黃色贏了!");
+                        setDisplayWord("Yellow Win!");
                         countWinTurn(false,true,false);
 
                     }
@@ -216,7 +216,7 @@ public void restartGame(View view){
 
             if (alreadySelectedList.size() == 9 && !isWin(yellowSelectedList) && !isWin(redSelectedList)){
                 setDisplayWord("End in a draw!");
-                setDisplayWord("平手!");
+                //setDisplayWord("Draw!");
                 newGameButton.setVisibility(View.VISIBLE);
                 countWinTurn(false,false,true);
                 this.gameEnd = true;
@@ -269,8 +269,8 @@ public void restartGame(View view){
 
         //play the music
         mediaPlayer = MediaPlayer.create(this, R.raw.splashing);
-        //mediaPlayer.start();
-        //mediaPlayer.setLooping(true);
+        mediaPlayer.start();
+        mediaPlayer.setLooping(true);
 
 
 

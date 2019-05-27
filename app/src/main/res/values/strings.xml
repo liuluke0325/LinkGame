@@ -1,10 +1,24 @@
 <resources>
-    <string name="app_name">Tic Tac Toe 井字棋</string>
-    <string name="newGame">新遊戲</string>
-    <string name="reCount">重新計分</string>
-    <string name="welcomeMessage">歡迎  點擊九宮格開始</string>
+    <string name="app_name">Tic Tac Toe</string>
+    <string name="newGame">New Game</string>
+    <string name="reCount">Clear</string>
+    <string name="welcomeMessage">Welcome\nPlease press the 3 x 3 of squares to start</string>
 
     <string name="title_activity_grid_layout_practice">GridLayoutPractice</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="musicControl">Volume</string>
+    <string name="newFunctionInfo">fix bug\n add English</string>
+    <string name="VC">1.40</string>
+    <string name="replayToEmail">Report Bug</string>
+    <string name="goToTestFunction">Test Function</string>
+    <string name="todo">TODO</string>
+    <string name="version">Version</string>
+    <string name="name_hsuehchih_liu_n_nemail_liuluke0325_gmail_com">Name: HsuehChih, Liu\nEmail: liuluke0325@gmail.com</string>
+    <string name="button1">How it began</string>
+    <string name="button2">splashing</string>
+    <string name="button3">click</string>
+    <string name="button4">penclick</string>
+    <string name="button5">Stop</string>
+    <string name="titleInTest">Testing Music List</string>
 </resources>
